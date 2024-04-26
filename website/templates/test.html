@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+helloworld
+{% block content %}
+{% for item in items %}
+    <img src="{{ item.photo.url }}">
+{% endfor %}
+{% endblock %}
+</body>
+</html>
