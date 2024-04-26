@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your one top shop for all your apparel needs!">
+    <meta name="keywords" content="shop, apparel, portfolio, Daveanand, Mannie, Project, e-commerce">
+    <meta name="author" content="Daveanand Mannie">
+    <title>Apparel For You</title>
+    <link rel="icon" type="image/png" href="{% static 'logos/LOGO.png' %}">
+    <link rel="stylesheet" href="{% static 'styles/stylesheet.css' %}">
+    <script src="{% static 'JavaScript/scripts.js' %}"></script>
+</head>
+<body class="container">
+
+{#{% include 'navbar.html' %}#}
+
+<div class="message-card-container">
+{% if messages %}
+        {% for message in messages %}
+            <div class="message-card">
+                {{ message }}
+            </div>
+        {% endfor %}
+{% endif %}
+</div>
+
+<div class="Footer">
+    {% include 'footer.html' %}
+</div>
+
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

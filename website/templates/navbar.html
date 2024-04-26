@@ -1,0 +1,38 @@
+{% load static %}
+<div class="Header">
+    <section class="Nav-logo">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'logos/LOGO.png' %}" class="Nav-logo" alt="logo">
+        </a>
+    </section>
+    <a href="{% url 'home' %}" class="Nav-text">Apparel For You</a>
+    <section class="Nav-search" >
+        <form action="{% url 'home' %}" method="get">
+            <input id="searchInput" aria-label="Search" placeholder="{% if query_placeholder %}{{ query_placeholder }}{% else %}Search Here {% endif %}" name="query">
+        </form>
+    </section>
+    <section class="Nav-profile">
+        {% if user.is_authenticated %}
+            <div>
+                <a class="Nav-profile-link" href="{% url 'profile' user.id %}">Hello {{ user }}</a>
+            </div>
+            <div class="User-profile-icon">
+                <a href="{% url 'profile' user.id %}">
+                    <img class="User-profile-icon" src="{% static 'logos/Black user.png' %}" alt="profile">
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+
+        {% else %}
+            <a  href="{% url 'login'%}">
+                <div class="User-profile-icon">
+                    <img class="User-profile-icon" src="{% static 'logos/Black user.png' %}" alt="profile">
+                </div>
+            </a>
+            <a href="{% url 'login' %}">Login/Register</a>
+        {% endif %}
+    </section>
+</div>
+
