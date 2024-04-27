@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+{#{% include 'shop/quickCart.html' %}#}
+<div class="profile-card">
+
+    <form class="profile-fields" method="post">
+        <section class="profile-title">
+            <h1>{{ user }}'s Profile</h1>
+        </section>
+        {% csrf_token %}
+        {{ user_form.as_p}}
+        <button class="update-button" type="submit" name="user_submit">Update</button>
+        {{ address_form.as_p }}
+        <button class="update-button" type="submit" name="address_submit">Update</button>
+    </form>
+</div>
+{% endblock %}

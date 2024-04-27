@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<body class="container">
+{#{% include 'shop/menu.html' %}#}
+    <div class="Main-content">
+        {% for item in items%}
+            <div class="item-card">
+                <div>
+                    <a href="{% url 'item-page' item.product_line.id %}">
+                        <img src="{{item.photo.url}}" alt="{{ item.name }}" class="item-image">
+                    </a>
+                </div>
+                <div class="item-details">
+                    <h3>{{ item.product_line.name}}</h3>
+                    <p>by {{ item.product_line.brand.name}}</p>
+                    <p class="info-price">${{ item.price }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% include 'shop/quickCart.html' %}
+</body>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<body class="container">
+<div class="menu">
+    <div class="gallery-thumbnail">
+        {% for item in items%}
+            <img src="{{item.photo.url}}" alt="{{ item.color }}">
+            <p>{{item.color}}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="item-page-container">
+    <div class="gallery-container">
+        <div class="gallery">
+            {% for item in items %}
+                <img src="{{item.photo.url}}" alt="{{ item.color }}">
+            {% endfor %}
+        </div>
+        <button class="prev-button"> < </button>
+        <button class="next-button"> > </button>
+    </div>
+
+    <div class="info-container">
+        <h1 class="info-title"> {{product.brand}} | {{ product.name }}</h1>
+        <hr>
+        <p class="info-description">{{ product.description }}</p>
+        <h2 class="info-price"> $ {{first_item.price}}</h2>
+        <hr>
+        <p class="info-selection">Size:</p>
+        <section class="size-container">
+            {% for size in first_item.shoe_size.all %}
+                <button class="size-button" data-size="{{ size }}">{{ size }}</button>
+            {% endfor %}
+            {% for size in first_item.clothing_size.all %}
+                <button class="size-button" data-size="{{ size }}">{{ size }}</button>
+            {% endfor %}
+        </section>
+        <p class="info-selection">Colors : </p>
+        <section class="color-container">
+            {% for item in items %}
+                <button class="color-button" data-color="{{item.id}}">{{ item.color }}</button>
+            {% endfor %}
+        </section>
+
+        <form method="post" action="{% url 'add-to-cart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="color_id" id="color-input" value="">
+            <input type="hidden" name="size" id="size-input" value="">
+            <label class="info-selection"> Quantity :
+                <input class="quantity-input" name="item_quantity" type="number" value="1" min="1"/>
+            </label>
+            <button class="cart-button">Add To Cart</button>
+        </form>
+    </div>
+</div>
+{% include 'shop/quickCart.html' %}
+</body>
+{% endblock %}

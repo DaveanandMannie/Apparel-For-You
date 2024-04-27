@@ -1,0 +1,62 @@
+{% load static %}
+{% if cart_items.count > 0 %}
+    <div class="Cart">
+        <section class="mini-cart-title-container">
+            <div>
+                <a href="{% url 'view-cart' %}" class="mini-cart-title-link">
+                    <h1 class="mini-cart-title">Your Cart</h1>
+                </a>
+            </div>
+            <div>
+                <p class="title-item-price">${{ user_cart.total }}</p>
+            </div>
+        </section>
+        <hr class="mini-cart-break">
+        <section class="mini-cart-container">
+        {% for cart_item in cart_items %}
+            <a class="mini-cart-card-link" href="{% url 'item-page' cart_item.item.product_line.id %}">
+                <section class="mini-cart-card">
+                    <section>
+                        <img src="{{ cart_item.item.photo.url }}" class="mini-cart-item-image" alt="{{ cart_item.item.color}}">
+                    </section>
+                    <section class="mini-cart-info-section">
+                        <div>
+                            <p class="mini-cart-info-focused">{{ cart_item.item.name }}</p>
+                        </div>
+                        <div>
+                            <p class="mini-cart-info-text">QTY: {{ cart_item.quantity }}</p>
+                        </div>
+                        <div>
+                            <p class="mini-cart-info-text">Size: {{ cart_item.size }}</p>
+                        </div>
+                        <div>
+                            <p class="mini-cart-info-focused"> $ {{ cart_item.item.price }}</p>
+                        </div>
+                        <div>
+                            <a href="{% url 'delete' cart_item.id %}">
+                                <img class="mini-cart-delete" src="{% static 'logos/trash_bin.png' %}" alt="remove">
+                            </a>
+                        </div>
+                    </section>
+                </section>
+            </a>
+        {% endfor %}
+        </section>
+        <section>
+            <a href="{% url 'view-cart' %}">
+                <button class="mini-checkout-button">Checkout</button>
+            </a>
+        </section>
+    </div>
+{% else %}
+    <div class="Cart">
+        <a href="{% url 'view-cart' %}" class="mini-cart-title-link">
+            <h1 class="mini-cart-title">Your Cart</h1>
+        </a>
+        <hr class="mini-cart-break">
+
+        <section class="mini-logo-container">
+            <img src="{% static 'logos/AddToCart.png' %}" alt="add to cart">
+        </section>
+    </div>
+{% endif %}

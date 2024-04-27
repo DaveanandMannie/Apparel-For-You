@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="login-card">
+    <section>
+        <h1 class="login-title">Welcome to Apparel For you</h1>
+    </section>
+    <section>
+        <form  class="login-form" method="post" action="">
+            {% csrf_token %}
+            <section class="login-fields">
+                <label aria-label="username" for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter Username">
+            </section>
+            <section class="login-fields">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Enter Password">
+            </section>
+            <section>
+                <input class="login-button" type="submit" value="Login"/>
+            </section>
+        </form>
+    </section>
+    <section>
+        <a href="{% url 'test-user' %}">
+          <button class="test-user-login">Test user</button>
+        </a>
+    </section>
+    <section class="register-text">
+        <a href="{% url 'register' %}"> Register Here</a>
+    </section>
+</div>
+{% endblock %}

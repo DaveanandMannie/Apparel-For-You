@@ -1,0 +1,99 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<div class="cart-page-container">
+    <div class="cart-title">
+        <h1>Your cart</h1>
+        <h2>{{ cart_items.all|length }} items | ${{ user_cart.total }} </h2>
+   </div>
+<hr class="cart-break">
+    <div class="cart-container">
+        {% for cart_item in cart_items %}
+            <div class="cart-item-container">
+                <a  href="{% url 'item-page' cart_item.item.id %}">
+                    <img src="{{ cart_item.item.photo.url}}" alt="{{ cart_item.color }}">
+                </a>
+                <section class="cart-item-info-container">
+                    <a  href="{% url 'item-page' cart_item.item.product_line.id %}">
+                        <h1>{{ cart_item.item.product_line }}</h1>
+                    </a>
+                    <h2>{{ cart_item.item.product_line.brand }}</h2>
+                    <h2>{{ cart_item.item.color }}</h2>
+                    <h2>Size : {{ cart_item.size }} </h2>
+                    <h2>$ {{ cart_item.item.price }}</h2>
+
+                </section>
+                <section class="cart-item-quantity-container">
+                    <form method="post" action="{% url 'update-cart' cart_item.id %}">
+                        {% csrf_token %}
+                        <label class="cart-quantity">
+                            Quantity:
+                            <input aria-label="quantity" class="cart-quantity-input"  name="new_quantity" type="number" value="{{ cart_item.quantity }}" min="1">
+                        </label>
+                    </form>
+                </section>
+                <section class="cart-end-container">
+                    <h1>${{ cart_item.per_item_price }}</h1>
+                    <a href="{% url 'delete' cart_item.id %}">
+                        <img src="{% static 'logos/trash_bin.png' %}" alt="remove">
+                    </a>
+                </section>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="checkout-container">
+{% for cart_item in cart_items %}
+	<section class="breakdown-container">
+        <div class="cart-detail-text">
+            {{ cart_item.item.product_line.name}}
+        </div>
+        <div class="cart-detail-text">
+            x{{ cart_item.quantity }}
+        </div>
+        <div class="cart-detail-text">
+            ${{ cart_item.per_item_price }}
+        </div>
+    </section>
+{% endfor %}
+    <hr>
+        <section class="breakdown-container">
+            <div class="cart-detail-text">
+                Subtotal:
+            </div>
+            <div class="cart-detail-text">
+                ${{ user_cart.total }}
+            </div>
+        </section>
+        <section class="breakdown-container">
+            <div class="cart-detail-text">
+                HST/GST:
+            </div>
+            <div class="cart-detail-text">
+                ${{ tax_amount }}
+            </div>
+        </section>
+        <section class="breakdown-container">
+            <div class="cart-detail-text">
+                Shipping
+            </div>
+            <div class="cart-detail-text">
+                Free
+            </div>
+        </section>
+    <hr>
+        <section class="breakdown-container">
+            <div class="total-details">
+                Total
+            </div>
+            <div class="total-details">
+                ${{ final_total }}
+            </div>
+        </section>
+    <button class="checkout-button" id="checkout-button">Checkout</button>
+    <div class="post-checkout-card" id="post-checkout-card">
+        <h1>You have reached the end of this proof of concept. For employment inquiries please contact me.</h1>
+    </div>
+</div>
+{% endblock %}
+
