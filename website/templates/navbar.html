@@ -8,7 +8,14 @@
     <a href="{% url 'home' %}" class="Nav-text">Apparel For You</a>
     <section class="Nav-search" >
         <form action="{% url 'home' %}" method="get">
-            <input id="searchInput" aria-label="Search" placeholder="{% if query_placeholder %}{{ query_placeholder }}{% else %}Search Here {% endif %}" name="query">
+            <input id="searchInput"
+                   aria-label="Search" 
+                   placeholder="{% if query_placeholder %}{{ query_placeholder }}{% else %}Search Here {% endif %}" 
+                   name="query"
+                   hx-get="{% url 'search' %}"
+                   hx-target="#Main-content"
+                   hx-trigger="input delay:0.1s"
+            >
         </form>
     </section>
     <section class="Nav-profile">

@@ -9,11 +9,17 @@ from django.db.models import QuerySet, Q
 from .models import Item, ProductLine, UserAddress, UserCart, CartItem
 from .forms import UserForm, AddressForm
 from decimal import Decimal
+from django_htmx.middleware import HtmxDetails
+
+
+class HtmxHttpRequest(HttpRequest):
+    htmx: HtmxDetails
 
 
 # TODO: HTMXify
 
-def search(request: HttpRequest) -> HttpResponse:
+def search(request: HtmxHttpRequest) -> HttpResponse:
+    items: list = []
     query = request.GET.get(key='query', default='')
     query_placeholder = query
     product_lines = ProductLine.objects.filter(
@@ -22,11 +28,21 @@ def search(request: HttpRequest) -> HttpResponse:
         Q(brand__name__icontains=query) |
         Q(categories__name__icontains=query)
     ).distinct()
+    for product_line in product_lines:
+        first_item = Item.objects.filter(product_line=product_line).first()
+        items.append(first_item)
+    context: dict = {
+        'items': items,
+        'query_placeholder': query_placeholder
+
+    }
+
+    return render(request, 'shop/_search.html', context)
 
 
 def home(request: HttpRequest) -> HttpResponse:
     items: list = []
-# query
+    # query
     query = request.GET.get(key='query', default='')
     query_placeholder = query
     product_lines = ProductLine.objects.filter(
