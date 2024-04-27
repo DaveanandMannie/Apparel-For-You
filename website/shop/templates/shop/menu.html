@@ -1,0 +1,22 @@
+<section class="Menu">
+    <div class="filter-container">
+        <a class="filter-button" href="{% url 'home' %}" >Clear Filters</a>
+
+        <h1 class="filter-title">Brands</h1>
+        <hr class="filter-break">
+        {% for brand in brands %}
+            <form class="filter-card" method="get" action="{% url 'home' %}">
+                <input type="submit" name="query" class="filter-button" value="{{ brand }}" {{ brand }}>
+                <img class="brand-photo" src="{{ brand.photo.url }}" alt="{{ brand }}">
+            </form>
+        {% endfor %}
+
+        <h1 class="filter-title">Categories</h1>
+        <hr class="filter-break">
+        {% for category in categories %}
+            <form method="get" action="{% url 'home' %}">
+                <input type="submit" name="query"  class="filter-button" value="{{ category }}" {{ category }} >
+            </form>
+        {% endfor %}
+    </div>
+</section>

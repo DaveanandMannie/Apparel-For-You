@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.db.models import QuerySet, Q
-from .models import Item, ProductLine, UserAddress, UserCart, CartItem
+from .models import Item, ProductLine, UserAddress, UserCart, CartItem, Brand, Category
 from .forms import UserForm, AddressForm
 from decimal import Decimal
 from django_htmx.middleware import HtmxDetails
@@ -16,12 +16,10 @@ class HtmxHttpRequest(HttpRequest):
     htmx: HtmxDetails
 
 
-# TODO: HTMXify
-
 def search(request: HtmxHttpRequest) -> HttpResponse:
     items: list = []
-    query = request.GET.get(key='query', default='')
-    query_placeholder = query
+    query: str = request.GET.get(key='query', default='')
+    query_placeholder: str = query
     product_lines = ProductLine.objects.filter(
         Q(item__color__icontains=query) |
         Q(name__icontains=query) |
@@ -40,6 +38,8 @@ def search(request: HtmxHttpRequest) -> HttpResponse:
 
 
 def home(request: HttpRequest) -> HttpResponse:
+    brands: Brand = Brand.objects.all()
+    categories: Category = Category.objects.all()
     items: list = []
     # query
     query = request.GET.get(key='query', default='')
@@ -64,6 +64,8 @@ def home(request: HttpRequest) -> HttpResponse:
         user_cart = None
     context: dict = {
         'items': items,
+        'brands': brands,
+        'categories': categories,
         'cart_items': cart_items,
         'user_cart': user_cart,
         'query_placeholder': query_placeholder,
@@ -71,7 +73,6 @@ def home(request: HttpRequest) -> HttpResponse:
     return render(request, 'shop/home.html', context)
 
 
-# TODO: HTMXify
 def itemPage(request: HttpRequest, pk: int) -> HttpResponse:
     product: ProductLine = ProductLine.objects.get(id=pk)
     items: QuerySet = Item.objects.filter(product_line=product)
