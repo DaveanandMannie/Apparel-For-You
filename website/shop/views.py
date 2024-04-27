@@ -34,7 +34,6 @@ def search(request: HtmxHttpRequest) -> HttpResponse:
     context: dict = {
         'items': items,
         'query_placeholder': query_placeholder
-
     }
 
     return render(request, 'shop/_search.html', context)
