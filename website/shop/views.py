@@ -15,7 +15,7 @@ from django_htmx.middleware import HtmxDetails
 class HtmxHttpRequest(HttpRequest):
     htmx: HtmxDetails
 
-
+# TODO: add dynamic filters on the main menu that retains the highlighted
 def search(request: HtmxHttpRequest) -> HttpResponse:
     items: list = []
     query: str = request.GET.get(key='query', default='')

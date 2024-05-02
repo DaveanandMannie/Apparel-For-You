@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+# TODO: Create a post checkout page instead of a notification
+
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('search/', views.search, name='search'),
