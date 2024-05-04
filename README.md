@@ -20,3 +20,14 @@ HTMX. I don't have much to say about that. I have included live search via HTMX 
 follow the SPA meta 
 - I have left out some features I want to add because I want to see what a production environment is like with feature
 updates and how I will manage both the user point and the VCS point on my side 
+- The auth included is very simple to use. It even offers both session and token based auth which is fairly easily.
+  - From the docs rolling out an OAuth2 seems to be straight forward as well.
+### Deployment
+- Yet to be implemented
+### The Future
+- As I learn more about the web I'm excited to come back to this project and Django in general to see how the framework
+works through it. 
+#### potential features 
+- integrating a dummy purchasing page 
+- using a front end framework
+
