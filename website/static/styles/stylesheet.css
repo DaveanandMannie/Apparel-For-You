@@ -83,11 +83,16 @@ body {
         Message end
 ======================================= */
 
-
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh ;
+}
 /* ========================================
         page structure start
 =========================================*/
 .container {
+    flex: 1;
     display: grid ;
     margin: 0 0 0 0 ;
     grid-template-columns: 0.8fr 3fr 0.8fr ;
@@ -871,9 +876,9 @@ body {
         Footer Start
 =========================== */
 .Footer {
-    margin: 0 0 0 0 ;
     grid-area: Footer ;
     background-color: #696969;
+    margin-top: auto;
 }
 .end-container {
     display: flex ;
