@@ -7,7 +7,10 @@
     </section>
     <a href="{% url 'home' %}" class="Nav-text">Apparel For You</a>
     <section class="Nav-search" >
+    {% url 'home' as home_url %}
+    {% if request.path != home_url %}
         <form action="{% url 'home' %}" method="get">
+    {% endif %}
             <input id="searchInput"
                    aria-label="Search" 
                    placeholder="{% if query_placeholder %}{{ query_placeholder }}{% else %}Search Here {% endif %}" 

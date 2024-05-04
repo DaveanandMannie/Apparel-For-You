@@ -15,23 +15,33 @@ from django_htmx.middleware import HtmxDetails
 class HtmxHttpRequest(HttpRequest):
     htmx: HtmxDetails
 
-# TODO: add dynamic filters on the main menu that retains the highlighted
+
+# TODO: Figure out state management without check boxes for multiple categories
 def search(request: HtmxHttpRequest) -> HttpResponse:
     items: list = []
     query: str = request.GET.get(key='query', default='')
     query_placeholder: str = query
+    selected_brands: list = request.GET.getlist('brand')
+    selected_categories: list = request.GET.getlist('category')
     product_lines = ProductLine.objects.filter(
         Q(item__color__icontains=query) |
         Q(name__icontains=query) |
         Q(brand__name__icontains=query) |
         Q(categories__name__icontains=query)
+
     ).distinct()
+    if selected_brands:
+        product_lines = product_lines.filter(brand__name__in=selected_brands)
+    if selected_categories:
+        product_lines = product_lines.filter(categories__name__in=selected_categories)
     for product_line in product_lines:
         first_item = Item.objects.filter(product_line=product_line).first()
         items.append(first_item)
     context: dict = {
         'items': items,
-        'query_placeholder': query_placeholder
+        'query_placeholder': query_placeholder,
+        'selected_brands': selected_brands,
+        'selected_categories': selected_categories
     }
 
     return render(request, 'shop/_search.html', context)
@@ -62,6 +72,7 @@ def home(request: HttpRequest) -> HttpResponse:
     else:
         cart_items = None
         user_cart = None
+
     context: dict = {
         'items': items,
         'brands': brands,

@@ -1,16 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // ------------------- Menu logic start ----------------------//
-    const urlParams = new URLSearchParams(window.location.search);
-    const queryValue = urlParams.get('query');
     const filterButtons = document.querySelectorAll('.filter-button');
-    console.log(queryValue)
     filterButtons.forEach(button => {
-        if (queryValue === button.value) {
-            button.classList.add('selected')
-        }
+        button.addEventListener('click', function() {
+            filterButtons.forEach(btn => {btn.classList.remove('selected')});
+            this.classList.add('selected');
+        });
     });
-
     // ------------------- Menu logic end ----------------------//
     // ------------------- gallery logic start ------------------ //
     const gallery = document.querySelector(".gallery");
