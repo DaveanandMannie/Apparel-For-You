@@ -16,6 +16,10 @@ class HtmxHttpRequest(HttpRequest):
     htmx: HtmxDetails
 
 
+def landing(request: HttpRequest) -> HttpResponse:
+    return render(request, 'landing.html')
+
+
 # TODO: Figure out state management without check boxes for multiple categories
 def search(request: HtmxHttpRequest) -> HttpResponse:
     items: list = []
