@@ -96,7 +96,6 @@ class UserAddress(Model):
 
 class UserCart(Model):
     user = ForeignKey(to=User, on_delete=CASCADE)
-    items = ManyToManyField(to=Item)
 
     def total(self) -> Decimal:
         total_price = Decimal(0)
