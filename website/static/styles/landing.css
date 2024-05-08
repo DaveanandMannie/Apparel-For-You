@@ -69,7 +69,13 @@ body {
     border-top-right-radius: 10px ;
     border-top-left-radius: 10px ;
 }
-
+.model-title.m2m {
+    background-color: floralwhite ;
+    border-radius: 10px ;
+}
+.model-title.user {
+    background-color: floralwhite ;
+}
 .model-break {
     border: 1px solid var(--color-light) ;
     border-radius: 5px ;
@@ -88,9 +94,81 @@ body {
     border: 1px solid ghostwhite;
     border-radius: 5px ;
 }
-
+.model-center-attribute {
+    flex: 2 ;
+    text-align: center ;
+}
+/* ======================================
+                Model End
+======================================= */
 
 
 /* ======================================
-                Model End
+                Diagram Start
+======================================= */
+.diagram{}
+.diagram li {
+    float: left ;
+    list-style-type: none ;
+    position: relative ;
+    padding: 20px 5px 0 ;
+}
+.diagram ul {
+    position: relative;
+    padding: 20px 0 0 0 ;
+}
+
+/* connections */
+.diagram li::before,
+.diagram li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    height: 20px;
+}
+
+.diagram li::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+}
+
+.diagram li:only-child::after,
+.diagram li:only-child::before {
+    display: none;
+}
+
+.diagram li:only-child {
+    padding-top: 0;
+}
+
+.diagram li:first-child::before,
+.diagram li:last-child::after {
+    border: 0 none;
+}
+
+.diagram li:last-child::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+}
+
+.diagram li:first-child::after {
+    border-radius: 5px 0 0 0;
+}
+
+.diagram ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0;
+    height: 20px;
+}
+
+/* ======================================
+                Diagram End
 ======================================= */
