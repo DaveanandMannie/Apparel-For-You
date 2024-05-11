@@ -7,7 +7,7 @@
     --color-super-light: #F1EAFF;
     --color-bg: white;
     --color-error: #FC4B0B;
-    --color-success: #5DD693
+    --color-success: #5DD693 ;
 }
 
 /* ===================================
@@ -49,6 +49,23 @@ body {
 /* ======================================
         general theme end
 ======================================= */
+/* ======================================
+        Animation Start
+======================================= */
+
+@keyframes lineAnimations {
+    0%, 100% { border-color: var(--color-dark-highlight) ; }
+    50% { border-color: red ; }
+    25%, 75% { border-color: var(--color-light) ; }
+}
+
+
+
+
+/* ======================================
+        Animation End
+======================================= */
+
 /* ======================================
                Models Start
 ======================================= */
@@ -126,6 +143,7 @@ body {
     top: 0 ;
     right: 50% ;
     border-top: 1px solid var(--color-dark-highlight) ;
+    animation: lineAnimations 5s infinite linear ;
     width: 50% ;
     height: 20px ;
 }
@@ -134,6 +152,7 @@ body {
     right: auto ;
     left: 50% ;
     border-left: 1px solid var(--color-dark-highlight) ;
+    animation: lineAnimations 5s infinite linear ;
 }
 
 .diagram li:only-child::after,
@@ -148,10 +167,12 @@ body {
 .diagram li:first-child::before,
 .diagram li:last-child::after {
     border: 0 none ;
+    animation: lineAnimations 5s infinite linear ;
 }
 
 .diagram li:last-child::before {
     border-right: 1px solid var(--color-dark-highlight) ;
+    animation: lineAnimations 5s infinite linear ;
     border-radius: 0 5px 0 0 ;
 }
 
@@ -165,6 +186,7 @@ body {
     top: 0 ;
     left: 50% ;
     border-left: 1px solid var(--color-dark-highlight) ;
+    animation: lineAnimations 5s infinite linear ;
     width: 0;
     height: 20px ;
 }
