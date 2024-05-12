@@ -1,229 +1,235 @@
-<div class="diagram">
-    <ul>
-        <li>
-            <!-- Brand figure -->
-            <figure class="model-card">
-                <div class=" model-title">Brand</div>
-                <hr class="model-break">
-                <section class="model-attribute-container">
-                    <p class="model-left-attribute">Name:</p>
-                    <p class="model-right-attribute">String (CharField)</p>
-                </section>
-                <hr class="model-attribute-break">
-                <section class="model-attribute-container">
-                    <p class="model-left-attribute">Photo</p>
-                    <p class="model-right-attribute">Image Field</p>
-                </section>
-            </figure>
-        </li>
-
-        <li>
-            <!-- Product line figure -->
-            <figure class="model-card" style="margin-left: 340px">
-                <div class=" model-title">Product Line</div>
-                <hr class="model-break">
-                <section class="model-attribute-container">
-                    <p class="model-left-attribute">Name:</p>
-                    <p class="model-right-attribute">String (CharField)</p>
-                </section>
-                <hr class="model-attribute-break">
-                <section class="model-attribute-container">
-                    <p class="model-left-attribute">Brand:</p>
-                    <p class="model-right-attribute">ForeignKey -> Brand</p>
-                </section>
-                <hr class="model-attribute-break">
-                <section class="model-attribute-container">
-                    <p class="model-left-attribute">Categories:</p>
-                    <p class="model-right-attribute">M2M -> Category </p>
-                </section>
-                <hr class="model-attribute-break">
-                <section class="model-attribute-container">
-                    <p class="model-left-attribute">Description:</p>
-                    <p class="model-right-attribute">TextField</p>
-                </section>
-            </figure>
+<div id="modal" _="on closeModal add .closing then wait for animationend then remove me">
+    <div class="modal-underlay" _="on click trigger closeModal"></div>
+    <div class="modal-content">
+        <button class="modal-close-button" _="on click trigger closeModal">Close</button>
+        <div class="diagram">
             <ul>
                 <li>
-                    <!-- Item Figure -->
-                    <figure class="model-card" style="margin-left: 340px">
-                        <div class=" model-title">Item</div>
+                    <!-- Brand figure -->
+                    <figure class="model-card">
+                        <div class=" model-title">Brand</div>
                         <hr class="model-break">
                         <section class="model-attribute-container">
-                            <p class="model-left-attribute">Colour:</p>
+                            <p class="model-left-attribute">Name:</p>
                             <p class="model-right-attribute">String (CharField)</p>
                         </section>
                         <hr class="model-attribute-break">
                         <section class="model-attribute-container">
-                            <p class="model-left-attribute">Price:</p>
-                            <p class="model-right-attribute">Decimal</p>
-                        </section>
-                        <hr class="model-attribute-break">
-                        <section class="model-attribute-container">
-                            <p class="model-left-attribute" style="font-size: small">Product Line:</p>
-                            <p class="model-right-attribute" style="font-size: small">ForeignKey -> Product Line</p>
-                        </section>
-                        <hr class="model-attribute-break">
-                        <section class="model-attribute-container">
-                            <p class="model-left-attribute">Shoe Size:</p>
-                            <p class="model-right-attribute">M2M -> Shoe Size</p>
-                        </section>
-                        <hr class="model-attribute-break">
-                        <section class="model-attribute-container">
-                            <p class="model-left-attribute">Clothing Size:</p>
-                            <p class="model-right-attribute">M2M -> Clothing Size</p>
-                        </section>
-                        <hr class="model-attribute-break">
-                        <section class="model-attribute-container">
-                            <p class="model-left-attribute">Photo:</p>
+                            <p class="model-left-attribute">Photo</p>
                             <p class="model-right-attribute">Image Field</p>
+                        </section>
+                    </figure>
+                </li>
+
+                <li>
+                    <!-- Product line figure -->
+                    <figure class="model-card" style="margin-left: 340px">
+                        <div class=" model-title">Product Line</div>
+                        <hr class="model-break">
+                        <section class="model-attribute-container">
+                            <p class="model-left-attribute">Name:</p>
+                            <p class="model-right-attribute">String (CharField)</p>
+                        </section>
+                        <hr class="model-attribute-break">
+                        <section class="model-attribute-container">
+                            <p class="model-left-attribute">Brand:</p>
+                            <p class="model-right-attribute">ForeignKey -> Brand</p>
+                        </section>
+                        <hr class="model-attribute-break">
+                        <section class="model-attribute-container">
+                            <p class="model-left-attribute">Categories:</p>
+                            <p class="model-right-attribute">M2M -> Category </p>
+                        </section>
+                        <hr class="model-attribute-break">
+                        <section class="model-attribute-container">
+                            <p class="model-left-attribute">Description:</p>
+                            <p class="model-right-attribute">TextField</p>
                         </section>
                     </figure>
                     <ul>
                         <li>
-                            <!-- Cart Item Figure -->
-                            <figure class="model-card">
-                                <div class=" model-title">Cart Item</div>
+                            <!-- Item Figure -->
+                            <figure class="model-card" style="margin-left: 340px">
+                                <div class=" model-title">Item</div>
                                 <hr class="model-break">
                                 <section class="model-attribute-container">
-                                    <p class="model-left-attribute">User Cart:</p>
-                                    <p class="model-right-attribute">ForeignKey -> User Cart</p>
-                                </section>
-                                <hr class="model-attribute-break">
-                                <section class="model-attribute-container">
-                                    <p class="model-left-attribute">Total:</p>
-                                    <p class="model-right-attribute">Function(self) -> Decimal</p>
-                                </section>
-                                <hr class="model-attribute-break">
-                                <section class="model-attribute-container">
-                                    <p class="model-left-attribute">Quantity:</p>
-                                    <p class="model-right-attribute">Integer</p>
-                                </section>
-                                <hr class="model-attribute-break">
-                                <section class="model-attribute-container">
-                                    <p class="model-left-attribute">Size:</p>
+                                    <p class="model-left-attribute">Colour:</p>
                                     <p class="model-right-attribute">String (CharField)</p>
                                 </section>
                                 <hr class="model-attribute-break">
                                 <section class="model-attribute-container">
-                                    <p class="model-left-attribute">Per Item Price:</p>
+                                    <p class="model-left-attribute">Price:</p>
                                     <p class="model-right-attribute">Decimal</p>
+                                </section>
+                                <hr class="model-attribute-break">
+                                <section class="model-attribute-container">
+                                    <p class="model-left-attribute" style="font-size: small">Product Line:</p>
+                                    <p class="model-right-attribute" style="font-size: small">ForeignKey -> Product Line</p>
+                                </section>
+                                <hr class="model-attribute-break">
+                                <section class="model-attribute-container">
+                                    <p class="model-left-attribute">Shoe Size:</p>
+                                    <p class="model-right-attribute">M2M -> Shoe Size</p>
+                                </section>
+                                <hr class="model-attribute-break">
+                                <section class="model-attribute-container">
+                                    <p class="model-left-attribute">Clothing Size:</p>
+                                    <p class="model-right-attribute">M2M -> Clothing Size</p>
+                                </section>
+                                <hr class="model-attribute-break">
+                                <section class="model-attribute-container">
+                                    <p class="model-left-attribute">Photo:</p>
+                                    <p class="model-right-attribute">Image Field</p>
                                 </section>
                             </figure>
                             <ul>
                                 <li>
-                                    <!-- User Cart Figure -->
+                                    <!-- Cart Item Figure -->
                                     <figure class="model-card">
-                                        <div class=" model-title">User Cart</div>
+                                        <div class=" model-title">Cart Item</div>
                                         <hr class="model-break">
                                         <section class="model-attribute-container">
-                                            <p class="model-left-attribute">User:</p>
-                                            <p class="model-right-attribute">ForeignKey -> User</p>
+                                            <p class="model-left-attribute">User Cart:</p>
+                                            <p class="model-right-attribute">ForeignKey -> User Cart</p>
                                         </section>
                                         <hr class="model-attribute-break">
                                         <section class="model-attribute-container">
                                             <p class="model-left-attribute">Total:</p>
                                             <p class="model-right-attribute">Function(self) -> Decimal</p>
                                         </section>
+                                        <hr class="model-attribute-break">
+                                        <section class="model-attribute-container">
+                                            <p class="model-left-attribute">Quantity:</p>
+                                            <p class="model-right-attribute">Integer</p>
+                                        </section>
+                                        <hr class="model-attribute-break">
+                                        <section class="model-attribute-container">
+                                            <p class="model-left-attribute">Size:</p>
+                                            <p class="model-right-attribute">String (CharField)</p>
+                                        </section>
+                                        <hr class="model-attribute-break">
+                                        <section class="model-attribute-container">
+                                            <p class="model-left-attribute">Per Item Price:</p>
+                                            <p class="model-right-attribute">Decimal</p>
+                                        </section>
                                     </figure>
                                     <ul>
                                         <li>
-                                            <!-- User Figure -->
+                                            <!-- User Cart Figure -->
                                             <figure class="model-card">
-                                                <div class="model-title user">User</div>
+                                                <div class=" model-title">User Cart</div>
                                                 <hr class="model-break">
                                                 <section class="model-attribute-container">
-                                                    <p class="model-center-attribute">Default Django User Model</p>
+                                                    <p class="model-left-attribute">User:</p>
+                                                    <p class="model-right-attribute">ForeignKey -> User</p>
+                                                </section>
+                                                <hr class="model-attribute-break">
+                                                <section class="model-attribute-container">
+                                                    <p class="model-left-attribute">Total:</p>
+                                                    <p class="model-right-attribute">Function(self) -> Decimal</p>
                                                 </section>
                                             </figure>
                                             <ul>
                                                 <li>
-                                                    <!-- User Address Figure -->
+                                                    <!-- User Figure -->
                                                     <figure class="model-card">
-                                                        <div class=" model-title">User Address</div>
+                                                        <div class="model-title user">User</div>
                                                         <hr class="model-break">
                                                         <section class="model-attribute-container">
-                                                            <p class="model-left-attribute">User:</p>
-                                                            <p class="model-right-attribute">ForeignKey -> User</p>
+                                                            <p class="model-center-attribute">Default Django User Model</p>
                                                         </section>
-                                                        <hr class="model-attribute-break">
-                                                        <section class="model-attribute-container">
-                                                            <p class="model-left-attribute">Address:</p>
-                                                            <p class="model-right-attribute">String (CharField)</p>
-                                                        </section>
-                                                        <hr class="model-attribute-break">
-                                                        <section class="model-attribute-container">
-                                                            <p class="model-left-attribute">Area Code:</p>
-                                                            <p class="model-right-attribute">String (CharField)</p>
-                                                        </section>
-                                                        <hr class="model-attribute-break">
-                                                        <section class="model-attribute-container">
-                                                            <p class="model-left-attribute">Unit:</p>
-                                                            <p class="model-right-attribute">String (CharField)</p>
-                                                        </section>
-                                                        <hr class="model-attribute-break">
                                                     </figure>
+                                                    <ul>
+                                                        <li>
+                                                            <!-- User Address Figure -->
+                                                            <figure class="model-card">
+                                                                <div class=" model-title">User Address</div>
+                                                                <hr class="model-break">
+                                                                <section class="model-attribute-container">
+                                                                    <p class="model-left-attribute">User:</p>
+                                                                    <p class="model-right-attribute">ForeignKey -> User</p>
+                                                                </section>
+                                                                <hr class="model-attribute-break">
+                                                                <section class="model-attribute-container">
+                                                                    <p class="model-left-attribute">Address:</p>
+                                                                    <p class="model-right-attribute">String (CharField)</p>
+                                                                </section>
+                                                                <hr class="model-attribute-break">
+                                                                <section class="model-attribute-container">
+                                                                    <p class="model-left-attribute">Area Code:</p>
+                                                                    <p class="model-right-attribute">String (CharField)</p>
+                                                                </section>
+                                                                <hr class="model-attribute-break">
+                                                                <section class="model-attribute-container">
+                                                                    <p class="model-left-attribute">Unit:</p>
+                                                                    <p class="model-right-attribute">String (CharField)</p>
+                                                                </section>
+                                                                <hr class="model-attribute-break">
+                                                            </figure>
+                                                        </li>
+                                                    </ul>
                                                 </li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <!-- M2M Figure -->
-                            <figure class="model-card" style="margin-left: 150px ">
-                                <div class="model-title m2m">Many Too Many</div>
-                            </figure>
-                            <ul>
-                                <li>
-                                    <!-- Clothing Size Figure -->
-                                    <figure class="model-card">
-                                        <div class=" model-title">Clothing Size</div>
-                                        <hr class="model-break">
-                                        <section class="model-attribute-container">
-                                            <p class="model-left-attribute">Size:</p>
-                                            <p class="model-right-attribute">String (CharField)</p>
-                                        </section>
-                                    </figure>
-                                </li>
 
                                 <li>
-                                    <!-- Shoe Size Figure -->
-                                    <figure class="model-card">
-                                        <div class=" model-title">Shoe Size</div>
-                                        <hr class="model-break">
-                                        <section class="model-attribute-container">
-                                            <p class="model-left-attribute">Size:</p>
-                                            <p class="model-right-attribute">Decimal</p>
-                                        </section>
+                                    <!-- M2M Figure -->
+                                    <figure class="model-card" style="margin-left: 150px ">
+                                        <div class="model-title m2m">Many Too Many</div>
                                     </figure>
+                                    <ul>
+                                        <li>
+                                            <!-- Clothing Size Figure -->
+                                            <figure class="model-card">
+                                                <div class=" model-title">Clothing Size</div>
+                                                <hr class="model-break">
+                                                <section class="model-attribute-container">
+                                                    <p class="model-left-attribute">Size:</p>
+                                                    <p class="model-right-attribute">String (CharField)</p>
+                                                </section>
+                                            </figure>
+                                        </li>
+
+                                        <li>
+                                            <!-- Shoe Size Figure -->
+                                            <figure class="model-card">
+                                                <div class=" model-title">Shoe Size</div>
+                                                <hr class="model-break">
+                                                <section class="model-attribute-container">
+                                                    <p class="model-left-attribute">Size:</p>
+                                                    <p class="model-right-attribute">Decimal</p>
+                                                </section>
+                                            </figure>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-            </ul>
-        </li>
 
-        <li>
-            <!-- m2m figure -->
-            <figure class="model-card">
-                <div class="model-title m2m">Many Too Many</div>
-            </figure>
-            <ul>
                 <li>
-                    <!-- Category figure -->
+                    <!-- m2m figure -->
                     <figure class="model-card">
-                        <div class=" model-title">Category</div>
-                        <hr class="model-break">
-                        <section class="model-attribute-container">
-                            <p class="model-left-attribute">Name:</p>
-                            <p class="model-right-attribute">String (CharField)</p>
-                        </section>
+                        <div class="model-title m2m">Many Too Many</div>
                     </figure>
+                    <ul>
+                        <li>
+                            <!-- Category figure -->
+                            <figure class="model-card">
+                                <div class=" model-title">Category</div>
+                                <hr class="model-break">
+                                <section class="model-attribute-container">
+                                    <p class="model-left-attribute">Name:</p>
+                                    <p class="model-right-attribute">String (CharField)</p>
+                                </section>
+                            </figure>
+                        </li>
+                    </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>

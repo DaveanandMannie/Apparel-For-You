@@ -59,8 +59,25 @@ body {
     25%, 75% { border-color: var(--color-light) ; }
 }
 
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
 
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
 
+@keyframes zoomIn {
+    0% {transform: scale(0.9);}
+    100% {transform: scale(1);}
+}
+
+@keyframes zoomOut {
+    0% {transform: scale(1);}
+    100% {transform: scale(0.9);}
+}
 
 /* ======================================
         Animation End
@@ -122,9 +139,7 @@ body {
 /* ======================================
                 Diagram Start
 ======================================= */
-.diagram{
-    align-self: center ;
-}
+.diagram{}
 .diagram li {
     float: left ;
     list-style-type: none ;
@@ -187,10 +202,78 @@ body {
     left: 50% ;
     border-left: 1px solid var(--color-dark-highlight) ;
     animation: lineAnimations 5s infinite linear ;
-    width: 0;
+    width: 0 ;
     height: 20px ;
 }
 
 /* ======================================
                 Diagram End
+======================================= */
+/* ======================================
+                Modal Start
+======================================= */
+.modal-close-button {
+    position: relative;
+    left: 95% ;
+    border: none ;
+    border-radius: 12px ;
+    background-color: var(--color-dark) ;
+    padding: 4px ;
+}
+.model-close-button:hover {
+}
+#modal {
+    position: fixed ;
+    top: 0 ;
+    bottom: 0 ;
+    left: 0 ;
+    right: 0 ;
+    background-color: rgba(0,0,0,0.5) ;
+    z-index: 1000 ;
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+
+    animation-name: fadeIn ;
+    animation-duration: 150ms ;
+    animation-timing-function: ease ;
+}
+
+#modal > .modal-underlay {
+    position: absolute ;
+    z-index: -1 ;
+    top: 0 ;
+    bottom: 0 ;
+    left: 0 ;
+    right: 0 ;
+}
+
+#modal > .modal-content {
+    position: absolute  ;
+    top: -10% ;
+    scale: 80% ;
+    border: solid 1px #999 ;
+    border-radius: 8px ;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.3) ;
+    background-color: white ;
+    padding: 20px 20px 100px 20px ;
+
+    animation-name: zoomIn ;
+    animation-duration: 150ms ;
+    animation-timing-function: ease ;
+}
+
+#modal.closing {
+    animation-name: fadeOut ;
+    animation-duration: 150ms ;
+    animation-timing-function: ease ;
+}
+
+#modal.closing > .modal-content {
+    animation-name: zoomOut ;
+    animation-duration: 150ms ;
+    animation-timing-function: ease ;
+}
+/* ======================================
+                Modal End
 ======================================= */

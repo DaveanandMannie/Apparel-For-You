@@ -10,12 +10,12 @@
     <title>Apparel For You - Landing</title>
     <link rel="icon" type="image/png" href="{% static 'logos/LOGO.png' %}">
     <link rel="stylesheet" href="{% static 'styles/stylesheet.css' %}">
-    {# TODO: change this style sheet to match the diagram html #}
     <link rel="stylesheet" href="{% static 'styles/landing.css' %}">
     <script src="{% static 'JavaScript/scripts.js' %}"></script>
     <script src="{% static 'JavaScript/htmx.js'%}" defer></script>
+    <script src="{% static 'JavaScript/_hyperscript.js'%}" defer></script>
 </head>
 <body>
-{% include 'database.html' %}
+    <button hx-get="{% url 'diagram' %}" hx-target="body" hx-swap="beforeend">test</button>
 </body>
 </html>

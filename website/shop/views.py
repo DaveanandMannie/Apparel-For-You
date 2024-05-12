@@ -20,7 +20,10 @@ def landing(request: HttpRequest) -> HttpResponse:
     return render(request, 'landing.html')
 
 
-# TODO: Figure out state management without check boxes for multiple categories
+def diagram(request: HtmxHttpRequest) -> HttpResponse:
+    return render(request, 'database.html')
+
+
 def search(request: HtmxHttpRequest) -> HttpResponse:
     items: list = []
     query: str = request.GET.get(key='query', default='')
