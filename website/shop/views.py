@@ -21,7 +21,7 @@ def landing(request: HttpRequest) -> HttpResponse:
 
 
 def diagram(request: HtmxHttpRequest) -> HttpResponse:
-    return render(request, 'database.html')
+    return render(request, '_database.html')
 
 
 def search(request: HtmxHttpRequest) -> HttpResponse:
